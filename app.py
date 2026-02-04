@@ -835,7 +835,7 @@ REFERENCE_TEXT = """##체계적 사고
 # 분석별 프롬프트 세트
 PROMPTS = {
     "성격": {
-        "p2": f"#참고 해석 문구\n{REFERENCE_TEXT}\n\n# Role: 맥락을 연결하는 HR 분석가
+        "p2": f"""#참고 해석 문구\n{REFERENCE_TEXT}\n\n# Role: 맥락을 연결하는 HR 분석가
 
 # Task
 제공된 [강점 요인]과 [보완 필요 요인] 목록을 **전체 풀(Pool)로 간주**하고,
@@ -865,8 +865,8 @@ PROMPTS = {
 ## Input
 {{text}}
 
-## Output",
-        "p3": f"#참고 해석 문구\n{REFERENCE_TEXT}\n\n# Role: 통찰력 있는 리더십 코치
+## Output""",
+        "p3": f"""#참고 해석 문구\n{REFERENCE_TEXT}\n\n# Role: 통찰력 있는 리더십 코치
 
 # Task
 제공된 요인 조합을 바탕으로, **각 조합당 4개의 통찰력 있는 문장**을 생성하세요.
@@ -925,8 +925,8 @@ PROMPTS = {
 ## Input (Actual Data)
 {{text}}
 
-## Output",
-        "p4": "f"""
+## Output""",
+        "p4": f"""
 # Role: 수석 에디터 (Chief Editor)
 
 # Task
@@ -952,10 +952,10 @@ PROMPTS = {
 ## Input (Candidates)
 {{text}}
 
-## Output"
+## Output"""
     },
     "외부": {
-        "p1": "#Case1
+        "p1": """#Case1
 ##Input
 ###자율 35
 ###자극 46
@@ -1007,8 +1007,8 @@ PROMPTS = {
 - 없을 경우, 가장 낮은 숫자 요인을 기재해 주세요.
 
 ### input{text}
-### output",
-        "p2": "#참고 해석 문구 
+### output""",
+        "p2": """#참고 해석 문구 
 ##변화개방성
 ###자율 
 ####50과 같거나 큰 요인 
@@ -1092,10 +1092,10 @@ PROMPTS = {
 - 어떤 요인을 사용했는지 문장 끝에 괄호로 요인과 점수를 입력해주세요.
 
 ##Input{text}
-##Output"
+##Output"""
     },
     "자신": {
-        "p1": "#Case1
+        "p1": """#Case1
 ##Input
 ###경제력 35
 ###권력 46
@@ -1152,8 +1152,8 @@ PROMPTS = {
 - 없을 경우, 가장 낮은 숫자 요인을 기재해 주세요.
 
 ### input{text}
-### output",
-        "p2": "#참고 해석 문구
+### output""",
+        "p2": """#참고 해석 문구
 ##자기증진
 ###경제력 
 ####50과 같거나 큰 요인 
@@ -1242,10 +1242,10 @@ PROMPTS = {
 - 어떤 요인을 사용했는지 문장 끝에 괄호로 요인과 점수를 입력해주세요.
 
 ##Input{text}
-##Output"
+##Output"""
     },
     "탈선": {
-        "p1": "#Case1
+        "p1": """#Case1
 ##Input
 ###나르시즘 35 
 ###타인조작 56 
@@ -1289,8 +1289,8 @@ PROMPTS = {
 요인 옆이 65와 같거나 큰 요인만 추출해주세요.
 
 ### input{text}
-### output",
-        "p2": "#참고 해석 문구
+### output""",
+        "p2": """#참고 해석 문구
 ##리더십 탈선 요인
 ###나르시즘 
 ####65와 같거나 큰 경우 
@@ -1328,8 +1328,8 @@ PROMPTS = {
 ##Outputㆍ'권한을 위임하기보다는 의사결정 및 업무 진행 과정에 지나치게 관여하는 성향(미시적관리 65점)', '겉과 속을 다르게 행동하는 성향 (수동공격성, 65점)'
 
 ##Input{text}
-##Output",
-        "p3": "#Case1
+##Output""",
+        "p3": """#Case1
 ##Inputㆍ전반적으로 리더십 탈선 요인이 발견되지 않음
 ##Outputㆍ전반적으로 리더십 탈선 요인이 발견되지 않음
 #Case2
@@ -1343,7 +1343,7 @@ PROMPTS = {
 ##Outputㆍ리더십에 부정적인 영향을 주는 요인 중 '권한을 위임하기보다는 의사결정 및 업무 진행 과정에 지나치게 관여하는 성향(미시적관리 65점)', '겉과 속을 다르게 행동하는 성향 (수동공격성, 65점)'이 Risk Zone(상위 10%, 65점 이상)에 위치하여 지속적인 자기 관리가 필요함
 
 ##Input{text}
-##Output"
+##Output"""
     }
 }
 
@@ -1440,4 +1440,5 @@ if st.button("분석 시작 🚀", type="primary"):
     if not url_input:
         st.warning("먼저 구글 시트 주소를 입력하세요.")
     else:
+
         run_analysis(url_input, analysis_mode)
