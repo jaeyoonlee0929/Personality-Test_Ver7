@@ -1415,7 +1415,7 @@ def run_analysis(url, mode):
             for i, label in enumerate(labels): ws.update_cell(1, len(headers) + 1 + i, label)
 
             df = pd.DataFrame(data[1:], columns=headers)
-            bar = st.progress(Bar)
+            bar = st.progress(0)
             for i, row in df.iterrows():
                 row_num, input_text = i + 2, row.iloc[1]
                 res1 = call_gpt(input_text, PROMPTS["탈선"]["p1"]); ws.update_cell(row_num, len(headers) + 1, res1)
@@ -1442,3 +1442,4 @@ if st.button("분석 시작 🚀", type="primary"):
     else:
 
         run_analysis(url_input, analysis_mode)
+
